@@ -1,6 +1,8 @@
-SELECT SI_ID, SI_NAME,SI_KIND,SI_SCHEDULEINFO.SI_SCHEDULE_TYPE,
-SI_NEXTRUNTIME,SI_SCHEDULE_STATUS,SI_STATUSINFO
-FROM CI_INFOOBJECTS WHERE SI_SCHEDULE_TYPE in (8,9) AND SI_SCHEDULE_STATUS = 9
+Find all scheduled jobs and their types with reports of type Excel, PDf, etc. on certain date that are not paused:
+------------------------------------------------------------------------------------------------
+SELECT SI_NAME, SI_SCHEDULEINFO.SI_SCHEDULE_TYPE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE SI_NEXTRUNTIME = '2021/10/25'
+AND SI_SCHEDULE_STATUS != 8 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 ------------------------------------------------------------------------------------------------
 
 SI_SCHEDULE_TYPE
