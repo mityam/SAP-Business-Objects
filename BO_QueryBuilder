@@ -1,0 +1,25 @@
+SELECT SI_ID, SI_NAME,SI_KIND,SI_SCHEDULEINFO.SI_SCHEDULE_TYPE,
+SI_NEXTRUNTIME,SI_SCHEDULE_STATUS,SI_STATUSINFO
+FROM CI_INFOOBJECTS WHERE SI_SCHEDULE_TYPE in (8,9) AND SI_SCHEDULE_STATUS = 9
+------------------------------------------------------------------------------------------------
+
+SI_SCHEDULE_TYPE
+
+0 – Once: the report is run once only
+1 – Hourly: the report is run hourly.
+2 – Daily: the report is run daily.
+3 – Weekly: the report is run weekly.
+4 – Monthly: the report is run monthly.
+5 – NthDay: the report is run on the nth day of the month.
+6 – 1stMonday: the report will run on the first monday of every month.
+7 – LastDay: the report will run on the last day of the month.
+8 – Calendar: the report will run based on calendar templates.
+9 – Run schedule based on calendar plugin object templates.
+
+SI_SCHEDULE_STATUS
+
+0 – Running
+1 – Success
+3 – Failure
+8 – Paused
+9 – Pending
