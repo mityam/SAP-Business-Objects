@@ -1,10 +1,12 @@
 Find all scheduled jobs and their types with reports of type Excel, PDf, etc. on certain date that are not paused:
 ------------------------------------------------------------------------------------------------
-SELECT SI_NAME, SI_SCHEDULEINFO.SI_SCHEDULE_TYPE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+SELECT SI_NAME, SI_KIND,  SI_NEXTRUNTIME,  SI_SCHEDULEINFO.SI_SCHEDULE_TYPE, SI_PROCESSINFO.SI_LOGON_INFO
+FROM ci_infoobjects, ci_appobjects, ci_systemobjects
 WHERE SI_NEXTRUNTIME = '2021/10/23'
 AND SI_SCHEDULE_STATUS != 8 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 
-SELECT SI_NAME, SI_SCHEDULEINFO.SI_SCHEDULE_TYPE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+SELECT SI_NAME, SI_KIND,  SI_NEXTRUNTIME,  SI_SCHEDULEINFO.SI_SCHEDULE_TYPE, SI_PROCESSINFO.SI_LOGON_INFO
+FROM ci_infoobjects, ci_appobjects, ci_systemobjects
 WHERE SI_NEXTRUNTIME = '2021/11/01'
 AND SI_SCHEDULE_STATUS != 8 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 ------------------------------------------------------------------------------------------------
