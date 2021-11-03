@@ -17,6 +17,7 @@ WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
 AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE=4
 AND SI_SCHEDULEINFO.SI_SCHEDULE_INTERVAL_MONTHS=1
 AND SI_NEXTRUNTIME='2021/12/01'
+
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ************Daily CR, Webi, Pubs, etc. reports with type excluding program objects *************************
@@ -27,11 +28,6 @@ WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
 AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE=2
 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 
-SELECT SI_NAME, SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
-WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
-AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE= 8
-AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_OF_WEEK=2
-AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_NTH_WEEK=0
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 ************Weekly reports that run every week on Monday and have SI_SCHEDULEINFO.SI_SCHEDULE_TYPE= 8 *************************
@@ -48,7 +44,6 @@ AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_NTH_WEEK=0
 ------------------------------------------------------------------------------------------------
 
 SI_SCHEDULE_TYPE
-
 0 – Once: the report is run once only
 1 – Hourly: the report is run hourly.
 2 – Daily: the report is run daily.
@@ -61,7 +56,6 @@ SI_SCHEDULE_TYPE
 9 – Run schedule based on calendar plugin object templates.
 
 SI_SCHEDULE_STATUS
-
 0 – Running
 1 – Success
 3 – Failure
