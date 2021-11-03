@@ -19,6 +19,13 @@ AND SI_SCHEDULEINFO.SI_SCHEDULE_INTERVAL_MONTHS=1
 AND SI_NEXTRUNTIME='2021/12/01'
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
+************Daily CR, Webi, Pubs, etc. reports with type excluding program objects *************************
+2 – Daily: the report is run daily.
+
+SELECT SI_name, SI_NEXTRUNTIME FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
+AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE=2
+AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 
 
 
