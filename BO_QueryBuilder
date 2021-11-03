@@ -27,18 +27,24 @@ WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
 AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE=2
 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 
+SELECT SI_NAME, SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
+AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE= 8
+AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_OF_WEEK=2
+AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_NTH_WEEK=0
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+************Weekly reports that run every week on Monday and have SI_SCHEDULEINFO.SI_SCHEDULE_TYPE= 8 *************************
+8 – Calendar: the report will run based on calendar templates.
+SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_OF_WEEK=2 means Monday,i.e, 2nd day of week
+SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_NTH_WEEK=0  means every week
 
+SELECT SI_NAME, SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
+AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE= 8
+AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_OF_WEEK=2
+AND SI_SCHEDULEINFO.SI_RUN_ON_TEMPLATE.SI_TEMPLATE_DAY1.SI_DAYS_NTH_WEEK=0
 
-
-SELECT SI_NAME, SI_KIND,  SI_NEXTRUNTIME,  SI_SCHEDULEINFO.SI_SCHEDULE_TYPE, SI_PROCESSINFO.SI_LOGON_INFO
-FROM ci_infoobjects, ci_appobjects, ci_systemobjects
-WHERE SI_NEXTRUNTIME = '2021/10/23'
-AND SI_SCHEDULE_STATUS != 8 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
-
-SELECT SI_NAME, SI_KIND,  SI_NEXTRUNTIME,  SI_SCHEDULEINFO.SI_SCHEDULE_TYPE, SI_PROCESSINFO.SI_LOGON_INFO
-FROM ci_infoobjects, ci_appobjects, ci_systemobjects
-WHERE SI_NEXTRUNTIME = '2021/11/01'
-AND SI_SCHEDULE_STATUS != 8 AND SI_KIND in ('Excel','Pdf','CrystalReport','Webi','Publication')
 ------------------------------------------------------------------------------------------------
 
 SI_SCHEDULE_TYPE
