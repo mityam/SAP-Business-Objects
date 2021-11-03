@@ -1,5 +1,14 @@
 Find all scheduled jobs and their types with reports of type Excel, PDf, etc. on certain date that are not paused:
 ------------------------------------------------------------------------------------------------
+**********Monthly reports running on 1st Day of the Month*************************
+
+SELECT SI_name, SI_NEXTRUNTIME FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE  SI_RECURRING = 1  AND SI_SCHEDULE_STATUS != 8
+AND SI_SCHEDULEINFO.SI_SCHEDULE_TYPE=5 
+AND SI_SCHEDULEINFO. SI_SCHEDULE_INTERVAL_NTHDAY = 1
+------------------------------------------------------------------------------------------------
+
+
 SELECT SI_NAME, SI_KIND,  SI_NEXTRUNTIME,  SI_SCHEDULEINFO.SI_SCHEDULE_TYPE, SI_PROCESSINFO.SI_LOGON_INFO
 FROM ci_infoobjects, ci_appobjects, ci_systemobjects
 WHERE SI_NEXTRUNTIME = '2021/10/23'
