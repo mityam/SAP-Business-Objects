@@ -1,0 +1,4 @@
+SELECT SI_KIND, SI_CUID, SI_NAME, SI_DESCRIPTION, SI_PROCESSINFO.SI_LOGON_INFO
+FROM ci_infoobjects, ci_appobjects, ci_systemobjects
+WHERE si_kind in ('CrystalReport', 'Webi')
+AND SI_Instance=0
